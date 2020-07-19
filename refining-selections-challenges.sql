@@ -15,7 +15,8 @@ WHERE title LIKE '%stories%';
 -- +-------------------------------------------+-------+
 -- | The Amazing Adventures of Kavalier & Clay |   634 |
 -- +-------------------------------------------+-------+
-SELECT title, pages
+SELECT title,
+    pages
 FROM books
 ORDER BY pages DESC
 LIMIT 1;
@@ -27,9 +28,7 @@ LIMIT 1;
 -- | Norse Mythology - 2016      |
 -- | 10% Happier - 2014          |
 -- +-----------------------------+
-SELECT CONCAT
-(title, ' - ', released_year)
-AS summary 
+SELECT CONCAT (title, ' - ', released_year) AS summary
 from books
 ORDER BY released_year DESC
 LIMIT 3;
@@ -40,7 +39,8 @@ LIMIT 3;
 -- | Oblivion: Stories    | Foster Wallace |
 -- | Consider the Lobster | Foster Wallace |
 -- +----------------------+----------------+
-SELECT title, author_lname
+SELECT title,
+    author_lname
 FROM books
 WHERE author_lname LIKE '% %';
 -- TODO Find The 3 Books With The Lowest Stock, Select title, year, and stock
@@ -51,9 +51,12 @@ WHERE author_lname LIKE '% %';
 -- | Where I'm Calling From: Selected Stories            |          1989 |             12 |
 -- | What We Talk About When We Talk About Love: Stories |          1981 |             23 |
 -- +-----------------------------------------------------+---------------+----------------+
-SELECT title, released_year, stock_quantity
+SELECT title,
+    released_year,
+    stock_quantity
 FROM books
-ORDER BY stock_quantity, title
+ORDER BY stock_quantity,
+    title
 LIMIT 3;
 -- TODO Print title and author_lname, sorted first by author_lname and then by title
 -- +-----------------------------------------------------+----------------+
@@ -79,9 +82,11 @@ LIMIT 3;
 -- | Just Kids                                           | Smith          |
 -- | Cannery Row                                         | Steinbeck      |
 -- +-----------------------------------------------------+----------------+
-SELECT title, author_lname
+SELECT title,
+    author_lname
 FROM books
-ORDER BY author_lname, title;
+ORDER BY author_lname,
+    title;
 -- TODO Make This Happen... Sorted Alphabetically By Last Name
 -- +---------------------------------------------+
 -- | yell                                        |
@@ -106,11 +111,14 @@ ORDER BY author_lname, title;
 -- | MY FAVORITE AUTHOR IS PATTI SMITH!          |
 -- | MY FAVORITE AUTHOR IS JOHN STEINBECK!       |
 -- +---------------------------------------------+
-SELECT 
-    UPPER
-    (
-        CONCAT('my favorite author is ',author_fname, ' ', author_lname, "!")
-    )
-AS yell
+SELECT UPPER (
+        CONCAT(
+            'my favorite author is ',
+            author_fname,
+            ' ',
+            author_lname,
+            "!"
+        )
+    ) AS yell
 FROM books
-ORDER BY author_lname; 
+ORDER BY author_lname;
